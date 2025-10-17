@@ -55,7 +55,7 @@ class CityListTest {
         // Creates a new city
         City city = new City("Charlottetown", "Prince Edward Island");
 
-        // Checks whether we have the city
+        // Confirms we do not have the city
         assertFalse(cityList.hasCity(city));
 
         // Adds the city, and checks whether it has been added
@@ -72,30 +72,45 @@ class CityListTest {
         // Adds the city, and checks whether it has been added
         cityList.add(city);
 
+        // Checks that we have the city, then deletes it
         assertTrue(cityList.hasCity(city));
         cityList.delete(city);
+
+        // Confirms city has been deleted, and then confirms the function throws an error when
+        // the function cannot delete the city
         assertFalse(cityList.hasCity(city));
+        assertThrows(IllegalArgumentException.class, () -> {
+            cityList.delete(city);
+        });
+
+
     }
 
     @Test
     void testCountCities() {
         CityList cityList = mockCityList();
 
+        // Creates three cities
         City city1 = new City("Charlottetown", "Prince Edward Island");
         City city2 = new City("Victoria", "BC");
         City city3 = new City("Calgary", "Alberta");
 
+        // Confirms we only have 1 city
         assertEquals(1,cityList.countCities());
 
+        // Confirms we have 2 once one is added
         cityList.add(city1);
         assertEquals(2,cityList.countCities());
 
+        // Confirms we have 3 when another is added
         cityList.add(city2);
         assertEquals(3,cityList.countCities());
 
+        // Confirms we have 4 when another is added
         cityList.add(city3);
         assertEquals(4,cityList.countCities());
 
+        // Confirms we have 3 when one ir removed
         cityList.delete(city3);
         assertEquals(3,cityList.countCities());
     }

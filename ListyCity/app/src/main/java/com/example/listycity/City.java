@@ -12,10 +12,18 @@ public class City implements Comparable<City>{
         this.province = province;
     }
 
+    /**
+     * Gets the city name
+     * @return The name of the city
+     */
     String getCityName(){
         return city;
     }
 
+    /**
+     * Gets the province name
+     * @return The name of the province
+     */
     String getProvinceName(){
         return province;
     }
@@ -31,7 +39,9 @@ public class City implements Comparable<City>{
 
     @Override
     /**
-     * Checks whether
+     * Checks whether the province names, city names, and hash codes are equal
+     * @param o The object being that this city is being compared to
+     * @return A boolean value depending on if this City equals the provided City
      */
     public boolean equals(Object o){
         City city = (City) o;
@@ -40,11 +50,13 @@ public class City implements Comparable<City>{
                 this.hashCode() == city.hashCode();
     }
 
+    @Override
     /**
-     * Returns a hashed city and province
-     * @return
+     * Returns a hash code of the city and the province.
+     * @return A hash code of the city, combined with the province
      */
     public int hashCode(){
+
         return city.hashCode() + province.hashCode();
     }
 }

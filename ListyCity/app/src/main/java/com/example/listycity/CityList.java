@@ -12,8 +12,8 @@ public class CityList {
 
 
     /**
-     * This adds a city to the list if the city does not exist
-     * @param city: This is a candidate city to add
+     * This adds a city to the list if the city does not exist in the CityList
+     * @param city This is a candidate city to add
      */
     public void add(City city) {
         if (cities.contains(city)) {
@@ -37,21 +37,37 @@ public class CityList {
     // Might need to override equals in city
 
     /**
-     * When given a city returns whether or not a city
-     * is in the list
+     * Returns a boolean value depending on whether the provided city
+     * is in the CityList
+     * @param city The city being searched for
+     * @return true if the CityList has the input city, else false
      */
     public boolean hasCity(City city){
+
         return cities.contains(city);
     }
 
 
+    /**
+     * Deletes a city from the CityList. If the City is not in the City list,
+     * this function will throw an Exception
+     * @param city The city being deleted
+     */
     public void delete(City city){
+
+        // If the city is not successfully removed, then it is not in the list, and
+        // an error must be thrown.
         if (!cities.remove(city)){
             throw new IllegalArgumentException();
         }
     }
 
+    /**
+     * Returns the number of cities in the CityList
+     * @return the size of the CityList
+     */
     public int countCities(){
+
         return cities.size();
     }
 
